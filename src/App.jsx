@@ -5,6 +5,20 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+    // Function to handle click event
+  const handleButtonClick = () => {
+    // Increment the count state
+    setCount(count => count + 1);
+
+    // Push the event to the Data Layer for GTM
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'buttonClick', // Event name used in GTM trigger
+      clickCount: count + 1 // The updated count value
+      // Add any additional parameters you want to track here
+    });
+  }
+
 
   return (
     <>
